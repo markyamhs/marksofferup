@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useLocation, useHistory } from 'react-router-dom';
 import Spinner from '../components/spinner';
 import { AppContext } from '../appContext';
@@ -67,8 +67,8 @@ export default function Results() {
           }),
         },
       };
-      const res = await axios.get(
-        'http://localhost:8080/api/filter',
+      const res = await api.get(
+        '/filter',
         searchParams
       );
       const posts = res.data.posts;

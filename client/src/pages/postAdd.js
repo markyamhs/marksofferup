@@ -2,7 +2,7 @@ import React, { useReducer, useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../appContext';
 import './postAdd.scss';
-import axios from 'axios';
+import api from '../api';
 import {
   Paper,
   Container,
@@ -106,13 +106,9 @@ const PostAdd = () => {
     selectedFiles.forEach((sf) => formData.append('images', sf));
     formData.append('thumbnail', thumbnail);
     try {
-      const res = await axios.post(
-        'http://localhost:8080/api/addPost',
-        formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }
-      );
+      const res = await api.post('/addPost', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
       history.push(`/details/${res.data._id}`);
     } catch (e) {
       console.log(e);
@@ -129,7 +125,7 @@ const PostAdd = () => {
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <Typography component="h1" variant="h5" align="center" >
+          <Typography component="h1" variant="h5" align="center">
             Post your item
           </Typography>
           <Grid container spacing={3}>
@@ -157,7 +153,7 @@ const PostAdd = () => {
                   multiple
                 />
               </Button>
-              {preview && preview.length>0 && (
+              {preview && preview.length > 0 && (
                 <div>
                   <Typography variant="h6">
                     Please also select a thumbnail image.
@@ -225,11 +221,12 @@ const PostAdd = () => {
                   onChange={handleChange}
                   value={formFields.condition}
                 >
-                  {conditions && conditions.map((c, i) => (
-                    <MenuItem value={c} key={`condition-${i}`}>
-                      {c}
-                    </MenuItem>
-                  ))}
+                  {conditions &&
+                    conditions.map((c, i) => (
+                      <MenuItem value={c} key={`condition-${i}`}>
+                        {c}
+                      </MenuItem>
+                    ))}
                 </Select>
               </FormControl>
             </Grid>
@@ -244,11 +241,12 @@ const PostAdd = () => {
                   onChange={handleChange}
                   value={formFields.category}
                 >
-                  {categories && categories.map((c, i) => (
-                    <MenuItem value={c} key={`cat-${i}`}>
-                      {c}
-                    </MenuItem>
-                  ))}
+                  {categories &&
+                    categories.map((c, i) => (
+                      <MenuItem value={c} key={`cat-${i}`}>
+                        {c}
+                      </MenuItem>
+                    ))}
                 </Select>
               </FormControl>
             </Grid>
@@ -321,7 +319,12 @@ const PostAdd = () => {
               />
             </Grid>
           </Grid>
-          <Button variant="contained" type="submit" disabled={submitting} sx={{margin:'20px 0px'}}>
+          <Button
+            variant="contained"
+            type="submit"
+            disabled={submitting}
+            sx={{ margin: '20px 0px' }}
+          >
             Submit
           </Button>
         </Paper>

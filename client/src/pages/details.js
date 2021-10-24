@@ -4,7 +4,7 @@ import Spinner from '../components/spinner';
 import ImageSlide from '../components/imageSlide';
 import ItemInfo from '../components/itemInfo';
 import { Breadcrumbs, Typography, Button } from '@mui/material';
-import axios from 'axios';
+import api from '../api';
 import './details.scss';
 
 class Details extends Component {
@@ -21,10 +21,9 @@ class Details extends Component {
   }
   async componentDidMount() {
     try {
-      const res = await axios.get(
-        `http://localhost:8080/api/details/${this.props.match.params.id}`
+      const res = await api.get(
+        `/details/${this.props.match.params.id}`
       );
-      console.log(res);
       this.setState({ details: res.data }, () => {
         this.setState({ loading: false });
       });

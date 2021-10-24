@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppContext } from './appContext';
-import axios from 'axios';
+import api from './api';
 import Home from './pages/home';
 import PostAdd from './pages/postAdd';
 import Results from './pages/results';
@@ -21,7 +21,7 @@ export function App() {
   });
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:8080/api/enums');
+      const res = await api.get('/enums');
       setSettingsFromBackend(res.data);
     };
     fetchData();

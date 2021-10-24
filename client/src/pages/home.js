@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemCard from '../components/itemCard';
-import axios from 'axios';
+import api from '../api';
 import Spinner from '../components/spinner';
 import { Grid, Box, Typography } from '@mui/material';
 
@@ -25,10 +25,7 @@ class Home extends Component {
           limit: 10,
         },
       };
-      const res = await axios.get(
-        'http://localhost:8080/api/get',
-        searchParams
-      );
+      const res = await api.get('/get', searchParams);
       this.setState({
         postArr: res.data,
         loading: false,
@@ -50,10 +47,7 @@ class Home extends Component {
             limit: 10,
           },
         };
-        const res = await axios.get(
-          'http://localhost:8080/api/get',
-          searchParams
-        );
+        const res = await api.get('/get', searchParams);
         this.setState({
           postArr: [...this.state.postArr, ...res.data],
           loading: false,
@@ -104,7 +98,11 @@ class Home extends Component {
             } else {
               //this is the last post. Attach a callback on it to detect scrolling/intersecting event
               return (
-                <Grid ref={this.lastPostCallback} item key={`postCard-${index}`}>
+                <Grid
+                  ref={this.lastPostCallback}
+                  item
+                  key={`postCard-${index}`}
+                >
                   <ItemCard post={post} />
                 </Grid>
               );
