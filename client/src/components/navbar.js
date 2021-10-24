@@ -59,6 +59,7 @@ export default function ButtonAppBar() {
                 className="navLink"
                 onClick={
                   ()=>{
+                    handleClose()
                     history.push(`/results?category=${cat}`);
                   }
                 }
