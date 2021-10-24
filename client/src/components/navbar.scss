@@ -1,5 +1,12 @@
-.buttonText {
-  font-size: 0.7em;
+.navButton {
+  display: flex;
+  flex-direction: column;
+}
+.navLink{
+  &:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 .logo {
   cursor: pointer;

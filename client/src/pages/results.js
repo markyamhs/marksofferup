@@ -12,6 +12,8 @@ import {
   FormControlLabel,
   FormGroup,
   Checkbox,
+  Select,
+  MenuItem
 } from '@mui/material';
 import ItemContainer from '../components/itemsContainer';
 import './results.scss';
@@ -29,9 +31,13 @@ export default function Results() {
   const [postArr, setPostArr] = useState([]);
   const [priceFilter, setPriceFilter] = useState(['', '']);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedConditions, setSelectedConditions] = useState([]);
+  const [selectedCondition, setSelectedCondition] = useState('All');
   useEffect(() => {
-    setTitle(query.get('title'));
+    if (query.has('title')) {
+      setTitle(query.get('title'));
+    } else {
+      setTitle('');
+    }
     if (query.has('minPrice') || query.has('maxPrice')) {
       const newPriceFilter = [...priceFilter];
       newPriceFilter[0] = query.get('minPrice');
@@ -45,32 +51,24 @@ export default function Results() {
     } else {
       setSelectedCategory('All');
     }
-    if (query.has('conditions')) {
-      if (query.get('conditions') === '') {
-        setSelectedConditions([]);
-      } else {
-        const conditionsArr = query.get('conditions').split(',');
-        setSelectedConditions(conditionsArr);
-      }
+    if (query.has('condition')) {
+      setSelectedCondition(query.get('condition'));
     } else {
-      setSelectedConditions([]);
+      setSelectedCondition('All');
     }
     const fetchData = async () => {
       const searchParams = {
         params: {
-          title: query.get('title'),
+          ...(query.has('title') && { title: query.get('title') }),
           ...(query.has('minPrice') && { minPrice: query.get('minPrice') }),
           ...(query.has('maxPrice') && { maxPrice: query.get('maxPrice') }),
           ...(query.has('category') && { category: query.get('category') }),
-          ...(query.has('conditions') && {
-            conditions: query.get('conditions'),
+          ...(query.has('condition') && {
+            condition: query.get('condition'),
           }),
         },
       };
-      const res = await api.get(
-        '/filter',
-        searchParams
-      );
+      const res = await api.get('/filter', searchParams);
       const posts = res.data.posts;
       setPostArr(posts);
       setLoading(false);
@@ -81,7 +79,7 @@ export default function Results() {
     query.get('minPrice'),
     query.get('maxPrice'),
     query.get('category'),
-    query.get('conditions'),
+    query.get('condition'),
   ]);
 
   const handleFilter = async ({ field, newVal }) => {
@@ -90,13 +88,13 @@ export default function Results() {
         query.set('minPrice', priceFilter[0]);
         query.set('maxPrice', priceFilter[1]);
         break;
-      case 'conditions':
-        query.set('conditions', newVal.join(','));
+      case 'condition':
+        query.set('condition', newVal);
         break;
       case 'clear':
         query.delete('minPrice');
         query.delete('maxPrice');
-        query.delete('conditions');
+        query.delete('condition');
         query.delete('category');
         break;
       default:
@@ -199,36 +197,24 @@ export default function Results() {
               Condition
             </Typography>
             <FormGroup>
-              {conditions.map((condition, index) => (
-                <FormControlLabel
-                  key={`condi-${index}`}
-                  control={
-                    <Checkbox
-                      checked={selectedConditions.includes(condition)}
-                      onClick={() => {
-                        let newConditions;
-                        if (selectedConditions.includes(condition)) {
-                          newConditions = selectedConditions.filter((con) => {
-                            return con !== condition;
-                          });
-                        } else {
-                          newConditions = [...selectedConditions];
-                          newConditions.push(condition);
-                        }
-                        handleFilter({
-                          field: 'conditions',
-                          newVal: newConditions,
-                        });
-                      }}
-                    />
-                  }
-                  label={condition}
-                />
-              ))}
+              <Select
+              value={selectedCondition}
+              label="Select condition"
+              onChange={(e)=>{
+                handleFilter({
+                  field: 'condition',
+                  newVal: e.target.value,
+                });
+              }}
+              >
+                <MenuItem value='All'>All</MenuItem>
+                {conditions.map((condition, index) => (
+                  <MenuItem value={condition} key={`results-con-index-${index}`}>{condition}</MenuItem>
+                ))}
+              </Select>
             </FormGroup>
           </div>
         </Paper>
-        <br />
       </div>
       <div id="results">
         <Typography gutterBottom variant="h5" color="#1976d2">

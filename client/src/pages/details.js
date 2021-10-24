@@ -40,7 +40,7 @@ class Details extends Component {
           <>
             <Breadcrumbs>
               <Link to="/">Home</Link>
-              <Typography>{this.state.details.category}</Typography>
+              <Link to={`/results?category=${this.state.details.category}`}>{this.state.details.category}</Link>
               <Typography>{this.state.details.title}</Typography>
             </Breadcrumbs>
             <div className="detailContainer">

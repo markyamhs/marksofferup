@@ -126,10 +126,9 @@ router.get('/details/:postId', async (req, res) => {
 router.get('/filter', async (req, res) => {
   try {
     let posts = null;
-    if (req.query && Object.keys(req.query).length === 0) {
-      return res.status(400).send({
-        message: 'Please provide search criteria.',
-      });
+    if (!req.query || Object.keys(req.query).length === 0) {
+      const posts = await Post.find({})
+      return res.send({ posts, yourQuery: req.query });
     } else {
       const dbQuery = {};
       if (req.query.title) {
@@ -152,8 +151,8 @@ router.get('/filter', async (req, res) => {
       if (req.query.category && req.query.category !== 'All') {
         dbQuery.category = req.query.category;
       }
-      if (req.query.conditions && req.query.conditions.length > 0) {
-        dbQuery.condition = { $in: req.query.conditions.split(',') };
+      if (req.query.condition && req.query.condition!=='All') {
+        dbQuery.condition = req.query.condition;
       }
       posts = await Post.find(dbQuery);
       res.send({ posts, yourQuery: req.query });
