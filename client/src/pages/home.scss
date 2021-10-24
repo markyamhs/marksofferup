@@ -1,0 +1,7 @@
+#itemCardContainer {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: space-between;
+  grid-gap: 8px;
+}

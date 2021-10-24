@@ -1,0 +1,30 @@
+#resultsContainer {
+  display: flex;
+  gap: 12px;
+}
+
+#sideBar {
+  width: 300px;
+  .sideBarContainer {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+  }
+  .sameRow {
+    display: flex;
+    margin: 5px 0px;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .link{
+    &:hover{
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+#results {
+  flex: 1 0 auto;
+  /* enable grow, disable shrink */
+}

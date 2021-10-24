@@ -1,0 +1,11 @@
+# dotenv environment variables file
+.env
+.env.production
+
+# Dependency directories
+node_modules/
+
+build/
+dist/
+
+uploads/

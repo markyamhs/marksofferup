@@ -1,0 +1,21 @@
+.itemCard {
+  height: 300px;
+  width: 200px;
+  display: block;
+  &:hover {
+    cursor: pointer;
+    .itemThumbnail{
+        box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.10);
+    }
+    .itemTitle{
+        text-decoration: underline;
+    }
+  }
+  .itemThumbnail {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

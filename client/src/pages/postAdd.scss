@@ -1,0 +1,17 @@
+.previewImgContainer{
+    display: flex;
+    flex-wrap: wrap;
+    .previewImg {
+        width: 100px;
+        height: 100px;
+        background-repeat:no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .thumbnail{
+        border-width: 5px;
+        border-style: solid;
+        border-color: lightgreen;
+    }
+}
+
