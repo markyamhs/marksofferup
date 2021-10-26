@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemCard from '../components/itemCard';
-import api from '../api';
+import api from '../util/api';
 import Spinner from '../components/spinner';
 import { Grid, Box, Typography } from '@mui/material';
 

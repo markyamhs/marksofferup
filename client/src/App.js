@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppContext } from './appContext';
-import api from './api';
+import api from './util/api';
 import Home from './pages/home';
 import PostAdd from './pages/postAdd';
 import Results from './pages/results';

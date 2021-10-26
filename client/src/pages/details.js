@@ -4,7 +4,7 @@ import Spinner from '../components/spinner';
 import ImageSlide from '../components/imageSlide';
 import ItemInfo from '../components/itemInfo';
 import { Breadcrumbs, Typography, Button } from '@mui/material';
-import api from '../api';
+import api from '../util/api';
 import './details.scss';
 
 class Details extends Component {

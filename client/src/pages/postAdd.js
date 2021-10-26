@@ -1,7 +1,7 @@
 import React, { useReducer, useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../appContext';
-import api from '../api';
+import api from '../util/api';
 import {
   Paper,
   Container,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import api from '../api';
+import api from '../util/api';
 import { useLocation, useHistory } from 'react-router-dom';
 import Spinner from '../components/spinner';
 import { AppContext } from '../appContext';
