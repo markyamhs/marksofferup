@@ -17,7 +17,7 @@ import {
   TextField,
   IconButton,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { validateEmail } from '../util/validator';
 
   //form fields are fetched from the backend
   const { initialFormFields } = useContext(AppContext);
