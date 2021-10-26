@@ -54,7 +54,7 @@ export default function PreviewImages({
           <Typography variant="h6">
             Please also select a thumbnail image.
           </Typography>
-          <div className="previewImgContainer">
+          <div id="previewImgContainer">
             {preview.map((url, index) => (
               <>
                 <div
