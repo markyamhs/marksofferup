@@ -78,7 +78,7 @@ router.get('/getAll', async (req, res) => {
 //@access  public
 //@usage   Allow user to fetch all existing posts
 router.get('/get', async (req, res) => {
-  if(!req.query.page || !req.query.limit){
+  if (!req.query.page || !req.query.limit) {
     res.status(400).send({
       message: 'Please include page and limit param.',
     });
@@ -127,7 +127,7 @@ router.get('/filter', async (req, res) => {
   try {
     let posts = null;
     if (!req.query || Object.keys(req.query).length === 0) {
-      const posts = await Post.find({})
+      const posts = await Post.find({});
       return res.send({ posts, yourQuery: req.query });
     } else {
       const dbQuery = {};
@@ -151,7 +151,7 @@ router.get('/filter', async (req, res) => {
       if (req.query.category && req.query.category !== 'All') {
         dbQuery.category = req.query.category;
       }
-      if (req.query.condition && req.query.condition!=='All') {
+      if (req.query.condition && req.query.condition !== 'All') {
         dbQuery.condition = req.query.condition;
       }
       posts = await Post.find(dbQuery);
@@ -172,6 +172,17 @@ router.get('/enums', async (req, res) => {
   res.send({
     categories: CATEGORIES,
     conditions: CONDITIONS,
+    initialFormFields: {
+      title: '',
+      sellerName: '',
+      sellerEmail: '',
+      description: '',
+      locatedCity: '',
+      locatedState: '',
+      price: '',
+      condition: '',
+      category: '',
+    },
   });
 });
 

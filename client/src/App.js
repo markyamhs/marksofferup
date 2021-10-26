@@ -18,6 +18,7 @@ export function App() {
   const [settingsFromBackend, setSettingsFromBackend] = useState({
     categories: [],
     conditions: [],
+    initialFormFields: {}
   });
   useEffect(() => {
     const fetchData = async () => {

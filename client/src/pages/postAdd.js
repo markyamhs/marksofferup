@@ -19,27 +19,11 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const initialFormFields = {
-  title: '',
-  sellerName: '',
-  sellerEmail: '',
-  description: '',
-  locatedCity: '',
-  locatedState: '',
-  price: '',
-  condition: '',
-  category: '',
-};
-
-const reducer = (curVals, newVals) => ({
-  ...curVals,
-  ...newVals,
-});
-
-const validateEmail = (email) => {
-  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email);
-};
+  //form fields are fetched from the backend
+  const { initialFormFields } = useContext(AppContext);
+  useEffect(() => {
+    dispatch(initialFormFields);
+  }, [initialFormFields]);
 
 const PostAdd = () => {
   const { categories, conditions } = useContext(AppContext);
