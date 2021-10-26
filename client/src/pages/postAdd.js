@@ -14,7 +14,7 @@ import PostForm from '../components/postForm';
 import PreviewImages from '../components/previewImages';
 import { validateEmail } from '../util/validator';
 
-const PostAdd = () => {
+export default function PostAdd() {
   const [formFields, dispatch] = useReducer(
     (curFormFields, newFieldInput) => ({
       ...curFormFields,
@@ -121,6 +121,6 @@ const PostAdd = () => {
       </Container>
     </form>
   );
-};
+}
 
 export default PostAdd;
