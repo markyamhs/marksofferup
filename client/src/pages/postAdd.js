@@ -122,5 +122,3 @@ export default function PostAdd() {
     </form>
   );
 }
-
-export default PostAdd;
