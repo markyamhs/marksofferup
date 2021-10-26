@@ -1,5 +1,5 @@
 .navButton {
-  display: flex;
+  //display: none;
   flex-direction: column;
 }
 .navLink{
@@ -10,4 +10,13 @@
 }
 .logo {
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .navButton {
+    display: none!important;
+  }
+  .logo {
+    font-size: 1rem!important;
+  }
 }

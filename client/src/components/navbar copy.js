@@ -2,10 +2,8 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../appContext';
 import SearchBar from './searchbar';
-import NavbarMenu from './navbarMenu';
 import SellIcon from '@mui/icons-material/Sell';
 import CategoryIcon from '@mui/icons-material/Category';
-import MenuIcon from '@mui/icons-material/Menu';
 import {
   Popover,
   IconButton,
@@ -17,13 +15,6 @@ import {
 import './navbar.scss';
 
 export default function ButtonAppBar() {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
   const [anchorEl, setAnchorEl] = useState(null);
   const { categories } = useContext(AppContext);
   const handleClick = (e) => {
@@ -35,35 +26,20 @@ export default function ButtonAppBar() {
   };
   const open = Boolean(anchorEl);
   const history = useHistory();
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            onClick={handleMobileMenuOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-          <NavbarMenu
-            mobileMoreAnchorEl={mobileMoreAnchorEl}
-            handleMobileMenuClose={handleMobileMenuClose}
-          />
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, marginRight: '50px' }}
+            sx={{ flexGrow: 1 }}
             onClick={() => {
               history.push('/');
             }}
             className="logo"
           >
-            MarkET
+            Mark's OfferUp
           </Typography>
           <SearchBar />
           <Popover
@@ -81,10 +57,12 @@ export default function ButtonAppBar() {
                 sx={{ p: 1 }}
                 key={`nav-cat-${i}`}
                 className="navLink"
-                onClick={() => {
-                  handleClose();
-                  history.push(`/results?category=${cat}`);
-                }}
+                onClick={
+                  ()=>{
+                    handleClose()
+                    history.push(`/results?category=${cat}`);
+                  }
+                }
               >
                 {cat}
               </Typography>

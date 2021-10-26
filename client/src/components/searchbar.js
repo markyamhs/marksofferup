@@ -74,7 +74,7 @@ export default function SearchBar() {
   return (
     <Search>
       <StyledInputBase
-        placeholder="Search by item name…"
+        placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
         value={searchStr}
         onChange={handleChange}
