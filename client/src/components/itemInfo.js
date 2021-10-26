@@ -17,7 +17,7 @@ export default function ItemInfo({ post }) {
     description,
   } = post;
   return (
-    <Grid p={2} sx={{ width: '400px' }}>
+    <Grid p={2} >
       <Typography gutterBottom variant="h4" sx={{ fontWeight: 'bold' }}>
         {title}
       </Typography>

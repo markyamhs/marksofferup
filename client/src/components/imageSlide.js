@@ -6,7 +6,7 @@ export default function ImageSlide({ imageUrls }) {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
-    <div className="container">
+    <div id="imageSlideContainer">
       <div className="largeImageContainer">
         {imageUrls && (
           <img className="largeImage" src={imageUrls[selectedImage]} />

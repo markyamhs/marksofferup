@@ -3,9 +3,8 @@ import { withRouter, Link } from 'react-router-dom';
 import Spinner from '../components/spinner';
 import ImageSlide from '../components/imageSlide';
 import ItemInfo from '../components/itemInfo';
-import { Breadcrumbs, Typography, Button } from '@mui/material';
+import { Breadcrumbs, Typography, Button, Grid } from '@mui/material';
 import api from '../util/api';
-import './details.scss';
 
 class Details extends Component {
   constructor(props) {
@@ -21,9 +20,7 @@ class Details extends Component {
   }
   async componentDidMount() {
     try {
-      const res = await api.get(
-        `/details/${this.props.match.params.id}`
-      );
+      const res = await api.get(`/details/${this.props.match.params.id}`);
       this.setState({ details: res.data }, () => {
         this.setState({ loading: false });
       });
@@ -40,14 +37,22 @@ class Details extends Component {
           <>
             <Breadcrumbs>
               <Link to="/">Home</Link>
-              <Link to={`/results?category=${this.state.details.category}`}>{this.state.details.category}</Link>
+              <Link to={`/results?category=${this.state.details.category}`}>
+                {this.state.details.category}
+              </Link>
               <Typography>{this.state.details.title}</Typography>
             </Breadcrumbs>
-            <div className="detailContainer">
-              <ImageSlide imageUrls={this.state.details.images} />
-              <ItemInfo post={this.state.details} />
-            </div>
-            <Button onClick={this.goBack} variant='contained'>Back to previous page</Button>
+            <Grid container justifyContent="center">
+              <Grid item md={12} lg={9}>
+                <ImageSlide imageUrls={this.state.details.images} />
+              </Grid>
+              <Grid item md={12} lg={3}>
+                <ItemInfo post={this.state.details} />
+              </Grid>
+            </Grid>
+            <Button onClick={this.goBack} variant="contained">
+              Back to previous page
+            </Button>
           </>
         )}
       </div>
