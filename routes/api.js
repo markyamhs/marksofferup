@@ -76,7 +76,7 @@ router.get('/getAll', async (req, res) => {
 
 //@route   GET /api/get?page=2&limit=10
 //@access  public
-//@usage   Allow user to fetch all existing posts
+//@usage   Allow user to fetch existing posts with pagination. Used for lazy loading
 router.get('/get', async (req, res) => {
   if (!req.query.page || !req.query.limit) {
     res.status(400).send({
@@ -122,7 +122,7 @@ router.get('/details/:postId', async (req, res) => {
 
 //@route   GET /api/filter
 //@access  public
-//@usage   Allow user to search existing posts
+//@usage   Allow user to search existing posts with different criteria
 router.get('/filter', async (req, res) => {
   try {
     let posts = null;
@@ -132,6 +132,7 @@ router.get('/filter', async (req, res) => {
     } else {
       const dbQuery = {};
       if (req.query.title) {
+        //case insensitive
         dbQuery.title = { $regex: req.query.title, $options: 'i' };
       }
       if (req.query.minPrice && req.query.maxPrice) {
