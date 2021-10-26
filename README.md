@@ -42,7 +42,7 @@ The posted items should be able to be viewed in the home page and results page.
 ![post add](https://nvidia-assignment-images.s3.us-east-2.amazonaws.com/recording+(6).gif)
 
 ## 5. Mobile responsive
-![mobile responsive](https://nvidia-assignment-images.s3.us-east-2.amazonaws.com/recording+(7).gif)
+![mobile](https://nvidia-assignment-images.s3.us-east-2.amazonaws.com/recording+(7).gif)
 
 # Tech stack used
 I used the MERN stack to build this application.
