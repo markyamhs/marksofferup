@@ -81,17 +81,26 @@ class Home extends Component {
     return (
       <div>
         <Grid container justifyContent="center" p={3}>
-          <Typography gutterBottom variant="h5" color="#1976d2">
+          <Typography gutterBottom variant="h5" color="#1976d2" textAlign="center">
             <Box sx={{ fontWeight: 'bold', m: 1 }}>
               The simpler way to buy and sell locally!
             </Box>
           </Typography>
         </Grid>
-        <div id="itemCardContainer">
+        <Grid container spacing={2}>
           {this.state.postArr.map((post, index) => {
             if (index !== this.state.postArr.length - 1) {
               return (
-                <Grid item key={`postCard-${index}`}>
+                <Grid
+                  item
+                  key={`postCard-${index}`}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={2}
+                  container
+                  justifyContent="center"
+                >
                   <ItemCard post={post} />
                 </Grid>
               );
@@ -102,13 +111,19 @@ class Home extends Component {
                   ref={this.lastPostCallback}
                   item
                   key={`postCard-${index}`}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={2}
+                  container
+                  justifyContent="center"
                 >
                   <ItemCard post={post} />
                 </Grid>
               );
             }
           })}
-        </div>
+        </Grid>
         <Spinner display={this.state.loading} />
       </div>
     );
