@@ -5,7 +5,12 @@ const router = require('./routes/api');
 const path = require('path')
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' ? false : 'http://localhost:3010',
+  optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions));
 connectDB();
 
 app.use(express.urlencoded({ extended: false }));
