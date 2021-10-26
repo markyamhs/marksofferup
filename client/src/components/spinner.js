@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 export default function Spinner({ display }) {
   return (
     <>
-      {display ? (
+      {display && (
         <Grid container alignItems="center" justifyContent="center">
           <Loader
             type="TailSpin"
@@ -17,9 +17,7 @@ export default function Spinner({ display }) {
             timeout={999999}
           />
         </Grid>
-      ) : (
-        <></>
-      )}
+      ) }
     </>
   );
 }
