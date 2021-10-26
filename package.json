@@ -8,6 +8,7 @@
     "client": "npm run serve --prefix client",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-client": "cd client && npm install && npm install --only=dev",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev && npm run build"
   },
   "keywords": [],
@@ -25,7 +26,7 @@
     "concurrently": "^6.3.0",
     "nodemon": "^2.0.14"
   },
-  "engines":{
+  "engines": {
     "node": "v14.15.1"
   }
 }
