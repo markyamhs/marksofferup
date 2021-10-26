@@ -196,18 +196,23 @@ export default function Results() {
             </Typography>
             <FormGroup>
               <Select
-              value={selectedCondition}
-              label="Select condition"
-              onChange={(e)=>{
-                handleFilter({
-                  field: 'condition',
-                  newVal: e.target.value,
-                });
-              }}
+                value={selectedCondition}
+                label="Select condition"
+                onChange={(e) => {
+                  handleFilter({
+                    field: 'condition',
+                    newVal: e.target.value,
+                  });
+                }}
               >
-                <MenuItem value='All'>All</MenuItem>
+                <MenuItem value="All">All</MenuItem>
                 {conditions.map((condition, index) => (
-                  <MenuItem value={condition} key={`results-con-index-${index}`}>{condition}</MenuItem>
+                  <MenuItem
+                    value={condition}
+                    key={`results-con-index-${index}`}
+                  >
+                    {condition}
+                  </MenuItem>
                 ))}
               </Select>
             </FormGroup>
@@ -225,6 +230,7 @@ export default function Results() {
           </Typography>
         )}
         <ItemContainer postArr={postArr} />
+ 
       </div>
     </div>
   );
