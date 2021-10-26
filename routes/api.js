@@ -79,7 +79,7 @@ router.get('/getAll', async (req, res) => {
 //@usage   Allow user to fetch existing posts with pagination. Used for lazy loading
 router.get('/get', async (req, res) => {
   if (!req.query.page || !req.query.limit) {
-    res.status(400).send({
+    return res.status(400).send({
       message: 'Please include page and limit param.',
     });
   }
