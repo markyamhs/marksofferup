@@ -2,6 +2,7 @@ import React from 'react';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Grid from '@mui/material/Grid';
 import Loader from 'react-loader-spinner';
+import PropTypes from 'prop-types'; 
 
 export default function Spinner({ display }) {
   return (
@@ -21,4 +22,8 @@ export default function Spinner({ display }) {
       )}
     </>
   );
+}
+
+Spinner.propTypes = {
+  display: PropTypes.bool
 }

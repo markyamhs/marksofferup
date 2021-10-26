@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import PropTypes from 'prop-types'; 
 import moment from 'moment';
 
 export default function ItemInfo({ post }) {
@@ -52,4 +53,19 @@ export default function ItemInfo({ post }) {
       </Typography>
     </Grid>
   );
+}
+
+ItemInfo.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    locatedCity: PropTypes.string.isRequired,
+    locatedState: PropTypes.string.isRequired,
+    condition: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    sellerName: PropTypes.string.isRequired,
+    sellerEmail: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  })
 }

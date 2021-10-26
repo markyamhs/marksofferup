@@ -1,5 +1,6 @@
 import React from 'react';
 import PrimarySearchAppBar from './navbar';
+import PropTypes from 'prop-types'; 
 import './layout.scss';
 
 export default function Layout({ children }) {
@@ -9,4 +10,8 @@ export default function Layout({ children }) {
       <div id="bodyContainer">{children}</div>
     </div>
   );
+}
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
 }

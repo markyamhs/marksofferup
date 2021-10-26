@@ -9,6 +9,7 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
+import PropTypes from 'prop-types'; 
 
 export default function PostForm({
   handleChange,
@@ -140,4 +141,22 @@ export default function PostForm({
       </Grid>
     </>
   );
+}
+
+PostForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  emailValidStatus: PropTypes.bool,
+  formFields: PropTypes.shape({
+    price: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    locatedCity: PropTypes.string,
+    locatedState: PropTypes.string,
+    condition: PropTypes.string,
+    category: PropTypes.string,
+    sellerName: PropTypes.string,
+    sellerEmail: PropTypes.string,
+    description: PropTypes.string,
+  })
 }

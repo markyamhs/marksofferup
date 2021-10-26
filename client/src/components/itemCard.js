@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Card, CardContent, Typography } from '@mui/material';
-
+import PropTypes from 'prop-types'; 
 import './itemCard.scss';
 
 export default function ItemCard({ post }) {
@@ -35,4 +35,15 @@ export default function ItemCard({ post }) {
       </CardContent>
     </Card>
   );
+}
+
+ItemCard.propTypes = {
+  post: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    locatedCity: PropTypes.string.isRequired,
+    locatedState: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  })
 }

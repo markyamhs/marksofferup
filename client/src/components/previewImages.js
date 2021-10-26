@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Grid, Typography, IconButton } from '@mui/material';
+import PropTypes from 'prop-types'; 
 import './previewImages.scss';
 
 export default function PreviewImages({
@@ -88,4 +89,11 @@ export default function PreviewImages({
       )}
     </Grid>
   );
+}
+
+PreviewImages.propTypes = {
+  thumbnail: PropTypes.number.isRequired,
+  setThumbnail: PropTypes.func.isRequired,
+  selectedFiles: PropTypes.array.isRequired,
+  setSelectedFiles: PropTypes.func.isRequired,
 }

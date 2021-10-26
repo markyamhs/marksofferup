@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'; 
 import './imageSlide.scss';
 
 export default function ImageSlide({ imageUrls }) {
@@ -28,4 +29,8 @@ export default function ImageSlide({ imageUrls }) {
       </div>
     </div>
   );
+}
+
+ImageSlide.propTypes = {
+  imageUrls: PropTypes.string.isRequired
 }

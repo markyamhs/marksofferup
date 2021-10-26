@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import ItemCard from './itemCard';
+import PropTypes from 'prop-types'; 
 import './itemsContainer.scss';
 
 export default function ItemsContainer({ postArr }) {
@@ -15,4 +16,8 @@ export default function ItemsContainer({ postArr }) {
         ))}
     </div>
   );
+}
+
+ItemsContainer.propTypes = {
+  postArr: PropTypes.array.isRequired
 }
