@@ -35,7 +35,7 @@ export function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/sell" component={PostAdd} />
             <Route exact path="/results" component={Results} />
-            <Route path="/details/:id" component={Details}/>
+            <Route exact path="/details/:id" component={Details}/>
           </Switch>
         </Layout>
       </AppContext.Provider>
