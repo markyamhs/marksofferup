@@ -20,7 +20,9 @@ export default function SearchBar() {
       alert('Your search field is empty.');
       return;
     }
-    history.push(`/results?title=${searchStr}`);
+    const searchStrCopy = searchStr;
+    SetSearchString('')
+    history.push(`/results?title=${searchStrCopy}`);
   };
 
   const Search = styled('div')(({ theme }) => ({
