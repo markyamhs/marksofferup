@@ -9,9 +9,7 @@ import {
   Typography,
   TextField,
   Button,
-  FormControlLabel,
   FormGroup,
-  Checkbox,
   Select,
   MenuItem
 } from '@mui/material';

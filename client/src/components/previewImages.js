@@ -62,7 +62,7 @@ export default function PreviewImages({
                   className={
                     'previewImg' + (thumbnail === index ? ' thumbnail' : '')
                   }
-                  onClick={(e) => {
+                  onClick={() => {
                     setThumbnail(index);
                   }}
                 ></div>
@@ -70,7 +70,7 @@ export default function PreviewImages({
                   aria-label="delete"
                   size="small"
                   key={`delete-image-${index}`}
-                  onClick={(e) => {
+                  onClick={() => {
                     const newArr = [...selectedFiles];
                     newArr.splice(index, 1);
                     setSelectedFiles(newArr);

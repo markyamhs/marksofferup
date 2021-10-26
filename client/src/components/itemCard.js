@@ -7,7 +7,7 @@ import './itemCard.scss';
 export default function ItemCard({ post }) {
   const { title, price, thumbnail, locatedCity, locatedState, _id } = post;
   const history = useHistory();
-  const handleClick = (e) => {
+  const handleClick = () => {
     history.push(`/details/${_id}`);
   };
   return (
