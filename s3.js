@@ -20,7 +20,8 @@ function uploadFile(file) {
   const uploadParams = {
     Bucket: bucketName,
     Body: fileStream,
-    Key: file.filename,
+    //avoid filename collision
+    Key: Date.now().toString() + file.filename,
   };
 
   return s3.upload(uploadParams).promise();
