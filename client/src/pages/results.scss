@@ -1,6 +1,6 @@
 #resultsContainer {
   display: flex;
-  //gap: 12px;
+  gap: 12px;
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
