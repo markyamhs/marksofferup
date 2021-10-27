@@ -3,6 +3,7 @@ const cors = require('cors');
 const connectDB = require('./db');
 const postController = require('./controllers/post');
 const enumsController = require('./controllers/enums')
+const storeImagesInServer = require('./middlewares/multer')
 const path = require('path')
 
 const app = express();
@@ -16,8 +17,10 @@ connectDB();
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/post', postController);
-app.use('/api/enums', enumsController);
+app.post('/api/post', storeImagesInServer, postController.addPost);
+app.get('/api/post/:postId', postController.getPostById);
+app.get('/api/post', postController.getPosts);
+app.use('/api/enums', enumsController.getEnums);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

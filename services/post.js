@@ -3,7 +3,7 @@ const Post = require('../models/post');
 const { uploadFile } = require('../s3');
 
 // uploads a post to the db
-async function addPost(postDetails, images) {
+async function dbAddPost(postDetails, images) {
   if (!images || images.length == 0) {
     throw 'no image provided';
   }
@@ -30,10 +30,9 @@ async function addPost(postDetails, images) {
   post = await post.save();
   return post;
 }
-exports.addPost = addPost;
 
 // get post(s) from the db with criteria
-async function getPosts(options = null) {
+async function dbGetPosts(options = null) {
   if (!options) {
     return await Post.find({}).sort({ createdAt: -1 });
   }
@@ -80,10 +79,9 @@ async function getPosts(options = null) {
       .limit(parseInt(limit));
   }
 }
-exports.getPosts = getPosts;
 
 // get post from the db by id
-async function getPostById(id) {
+async function dbGetPostById(id) {
   const post = await Post.findById(id);
   if (post) {
     return post;
@@ -91,4 +89,9 @@ async function getPostById(id) {
     throw 'The post you search for does not exist.';
   }
 }
-exports.getPostById = getPostById;
+
+module.exports = {
+  dbAddPost,
+  dbGetPosts,
+  dbGetPostById,
+};
