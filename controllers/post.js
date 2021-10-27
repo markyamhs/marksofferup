@@ -1,8 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const { addPost, getPosts, getPostById } = require('../services/post');
-const CONDITIONS = require('../models/conditions');
-const CATEGORIES = require('../models/category');
 
 const postController = express.Router();
 
@@ -81,27 +79,6 @@ postController.get('/', async (req, res) => {
       message: e,
     });
   }
-});
-
-//@route   GET /api/enums
-//@access  public
-//@usage   Allow user to fetch all enums (e.g. item categories, item conditions, etc.)
-postController.get('/enums', async (req, res) => {
-  res.send({
-    categories: CATEGORIES,
-    conditions: CONDITIONS,
-    initialFormFields: {
-      title: '',
-      sellerName: '',
-      sellerEmail: '',
-      description: '',
-      locatedCity: '',
-      locatedState: '',
-      price: '',
-      condition: '',
-      category: '',
-    },
-  });
 });
 
 module.exports = postController;
