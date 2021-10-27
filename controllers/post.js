@@ -1,22 +1,13 @@
 const express = require('express');
-const multer = require('multer');
+const storeImagesInServer = require('../middlewares/multer')
 const { addPost, getPosts, getPostById } = require('../services/post');
 
 const postController = express.Router();
 
-const storage = multer.diskStorage({
-  destination: 'uploads/',
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
-
 //@route   POST /api/post
 //@access  public
 //@usage   Allow user to add a new post
-postController.post('/', upload.array('images'), async (req, res) => {
+postController.post('/', storeImagesInServer, async (req, res) => {
   try {
     const post = await addPost(req.body, req.files);
     return res.send(post);
