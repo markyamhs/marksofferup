@@ -62,7 +62,7 @@ export default function PostAdd() {
     selectedFiles.forEach((sf) => formData.append('images', sf));
     formData.append('thumbnail', thumbnail);
     try {
-      const res = await api.post('/addPost', formData, {
+      const res = await api.post('/post', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       history.push(`/details/${res.data._id}`);

@@ -66,8 +66,8 @@ export default function Results() {
           }),
         },
       };
-      const res = await api.get('/filter', searchParams);
-      const posts = res.data.posts;
+      const res = await api.get('/post', searchParams);
+      const posts = res.data;
       setPostArr(posts);
       setLoading(false);
     };

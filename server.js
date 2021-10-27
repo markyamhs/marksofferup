@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
-const router = require('./routes/api');
+const postController = require('./controllers/post');
 const path = require('path')
 
 const app = express();
@@ -15,7 +15,7 @@ connectDB();
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', router);
+app.use('/api/post', postController);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

@@ -25,7 +25,7 @@ class Home extends Component {
           limit: 10,
         },
       };
-      const res = await api.get('/get', searchParams);
+      const res = await api.get('/post', searchParams);
       this.setState({
         postArr: res.data,
         loading: false,
@@ -47,7 +47,7 @@ class Home extends Component {
             limit: 10,
           },
         };
-        const res = await api.get('/get', searchParams);
+        const res = await api.get('/post', searchParams);
         this.setState({
           postArr: [...this.state.postArr, ...res.data],
           loading: false,

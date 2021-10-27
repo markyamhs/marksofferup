@@ -20,7 +20,7 @@ class Details extends Component {
   }
   async componentDidMount() {
     try {
-      const res = await api.get(`/details/${this.props.match.params.id}`);
+      const res = await api.get(`/post/${this.props.match.params.id}`);
       this.setState({ details: res.data }, () => {
         this.setState({ loading: false });
       });
