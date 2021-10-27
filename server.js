@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 const postController = require('./controllers/post');
-const enumController = require('./controllers/enum')
+const enumsController = require('./controllers/enums')
 const path = require('path')
 
 const app = express();
@@ -17,7 +17,7 @@ connectDB();
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/post', postController);
-app.use('/api/enum', enumController);
+app.use('/api/enums', enumsController);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

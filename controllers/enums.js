@@ -2,12 +2,12 @@ const express = require('express');
 const CONDITIONS = require('../models/conditions');
 const CATEGORIES = require('../models/category');
 
-const enumController = express.Router();
+const enumsController = express.Router();
 
 //@route   GET /api/enums
 //@access  public
 //@usage   Allow user to fetch all enums (e.g. item categories, item conditions, etc.)
-enumController.get('/', async (req, res) => {
+enumsController.get('/', async (req, res) => {
     res.send({
       categories: CATEGORIES,
       conditions: CONDITIONS,
@@ -25,4 +25,4 @@ enumController.get('/', async (req, res) => {
     });
   });
 
-  module.exports = enumController;
+  module.exports = enumsController;
